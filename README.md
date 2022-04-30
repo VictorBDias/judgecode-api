@@ -1,1 +1,1 @@
-# judgecode-api
+# judgecode-api-adonis
