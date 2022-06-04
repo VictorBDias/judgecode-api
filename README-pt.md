@@ -8,9 +8,9 @@
   <img src="https://img.shields.io/github/languages/count/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="GitHub language count" >
   <img src="https://img.shields.io/github/repo-size/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="Repository size" >
   <img src="https://wakatime.com/badge/user/e61842d0-c588-4586-96a3-f0448a434be4/project/b0347a5f-cacf-486d-bd2d-b91d3e6cb570.svg?style=flat&logo=appveyor" alt="Wakatime" >
-  <a href="https://github.com/gabrielmaialva33/base-acl-api/commits/master">
+  <a href="https://github.com/gabrielmaialva33/base-rbac-api/commits/master">
     <img src="https://img.shields.io/github/last-commit/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="GitHub last commit" >
-    <img src="https://img.shields.io/badge/made%20by-Maia-15c3d6?style=flat&logo=appveyor" alt="Maia" >  
+    <img src="https://img.shields.io/badge/feito%20por-Maia-15c3d6?style=flat&logo=appveyor" alt="Maia" >
   </a>
 </p>
 
@@ -23,18 +23,18 @@
 </p>
 
 <p align="center">
-  <a href="#bookmark-about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#computer-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#wrench-tools">Tools</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#package-installation">Installation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-license">License</a>
+  <a href="#bookmark-about">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#computer-technologies">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#wrench-tools">Ferramentas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#package-installation">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-license">Licença</a>
 </p>
 
 <br>
 
-## :bookmark: About
+## :bookmark: Sobre
 
-**Base ACL** is an access control list base api that hopes to serve many projects.
+**Base ACL** é uma API base de lista de controle de acesso que espera atender a muitos projetos.
 
 <kbd>
   <img src=".github/assets/images/schema.svg" alt="schema">
@@ -42,7 +42,7 @@
 
 <br>
 
-## :computer: Technologies
+## :computer: Tecnologias
 
 - **[Typescript](https://www.typescriptlang.org/)**
 - **[Node.js](https://nodejs.org/)**
@@ -52,7 +52,7 @@
 
 <br>
 
-## :wrench: Tools
+## :wrench: Ferramentas
 
 - **[WebStorm](https://www.jetbrains.com/webstorm/)**
 - **[Insomnia](https://insomnia.rest/)**
@@ -60,11 +60,11 @@
 
 <br>
 
-## :package: Installation
+## :package: Instalação
 
-### :heavy_check_mark: **Prerequisites**
+### :heavy_check_mark: **Pré-requisitos**
 
-The following software must be installed:
+Os seguintes softwares devem estar instalados:
 
 - **[Node.js](https://nodejs.org/en/)**
 - **[Git](https://git-scm.com/)**
@@ -73,7 +73,7 @@ The following software must be installed:
 
 <br>
 
-### :arrow_down: **Cloning the repository**
+### :arrow_down: **Clonando o repositório**
 
 ```sh
   $ git clone https://github.com/gabrielmaialva33/base-acl-api.git
@@ -81,30 +81,30 @@ The following software must be installed:
 
 <br>
 
-### :arrow_forward: **Running the application**
+### :arrow_forward: **Rodando o backend**
 
 - :package: API
 
 ```sh
   $ cd base-acl-api
-  # Dependencies install.
-  $ yarn # or npm install
-  # Config environment system
+  # Instalação de dependências.
+  $ yarn # ou npm install
+  # Configuração ambiente de sistema
   $ cp .env.example .env
-  # Data base creation.
-  $ node ace migration:run # or docker-compose up --build
-  # API start
-  $ node ace serve --watch # or yarn dev or npm dev
+  # Criação de banco de dados.
+  $ node ace migration:run # ou docker-compose up --build
+  # Iniciar API
+  $ node ace serve --watch # ou yarn start ou npm dev
 ```
 
 <br>
 
-## :twisted_rightwards_arrows: Routes
+## :twisted_rightwards_arrows: Rotas
 
-Get routes for insomnia [Donwload](https://raw.githubusercontent.com/gabrielmaialva33/base-acl-api/master/.github/assets/insomnia/Insomnia.json.zip)
+Arquivo de rotas [Donwload](https://raw.githubusercontent.com/gabrielmaialva33/base-acl-api/master/.github/assets/insomnia/Insomnia.json.zip)
 
-## :memo: License
+## :memo: Licença
 
-This project is under the **MIT** license. [MIT](./LICENSE) ❤️
+O projeto está sobre a licença [MIT](./LICENSE) ❤️
 
-Liked? Leave a little star to help the project ⭐
+Gostou? Deixe uma estrela para ajudar o projeto ⭐
