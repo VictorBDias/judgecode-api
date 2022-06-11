@@ -1,7 +1,7 @@
-import BaseModel from 'App/Shared/Models/BaseModel'
-import { column, hasMany, HasMany, scope } from '@ioc:Adonis/Lucid/Orm'
+import { afterFind, column, hasMany, HasMany, scope } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 
+import BaseModel from 'App/Shared/Models/BaseModel'
 import Problem from 'App/Modules/Problems/Models/Problem'
 
 export default class Category extends BaseModel {
@@ -51,6 +51,10 @@ export default class Category extends BaseModel {
    * Hooks
    * ------------------------------------------------------
    */
+  @afterFind()
+  public static async loadCategoryRelationsOnGet(category: Category): Promise<void> {
+    await category.load('problems', (builder) => builder.orderBy('id'))
+  }
 
   /**
    * ------------------------------------------------------

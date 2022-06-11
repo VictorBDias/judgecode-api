@@ -1,7 +1,15 @@
-import BaseModel from 'App/Shared/Models/BaseModel'
-import { BelongsTo, belongsTo, column, scope } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
+import {
+  afterFetch,
+  afterFind,
+  afterPaginate,
+  BelongsTo,
+  belongsTo,
+  column,
+  scope,
+} from '@ioc:Adonis/Lucid/Orm'
 
+import BaseModel from 'App/Shared/Models/BaseModel'
 import User from 'App/Modules/Accounts/Models/User'
 import Category from 'App/Modules/Problems/Models/Category'
 
@@ -58,11 +66,26 @@ export default class Problem extends BaseModel {
     foreignKey: 'category_id',
   })
   public category: BelongsTo<typeof Category>
+
   /**
    * ------------------------------------------------------
    * Hooks
    * ------------------------------------------------------
    */
+  @afterFind()
+  public static async loadProblemsRelationsOnGet(problem: Problem): Promise<void> {
+    await problem.load('category')
+    await problem.load('owner')
+  }
+
+  @afterFetch()
+  @afterPaginate()
+  public static async loadProblemsRelationsOnPaginate(problems: Array<Problem>): Promise<void> {
+    for (const problem of problems) {
+      await problem.load('category')
+      await problem.load('owner')
+    }
+  }
 
   /**
    * ------------------------------------------------------
