@@ -9,7 +9,7 @@ export default class extends BaseSchema {
       this.schema.createTable(this.tableName, (table) => {
         table.uuid('id').primary().defaultTo(this.db.rawQuery('uuid_generate_v4()').knexQuery)
 
-        table.string('name', 80).notNullable()
+        table.string('name', 80).notNullable().unique()
         table.text('description').nullable()
 
         table.boolean('is_deleted').notNullable().defaultTo(false)
