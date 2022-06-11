@@ -34,7 +34,7 @@
 
 ## :bookmark: Sobre
 
-**Base ACL** é uma API base de lista de controle de acesso que espera atender a muitos projetos.
+**JudgeCode** é uma plataforma de programação com foco em ajudar os programadores.
 
 <kbd>
   <img src=".github/assets/images/schema.svg" alt="schema">
