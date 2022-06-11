@@ -1,5 +1,5 @@
 import BaseModel from 'App/Shared/Models/BaseModel'
-import { BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import { BelongsTo, belongsTo, column, scope } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 
 import User from 'App/Modules/Accounts/Models/User'
@@ -69,6 +69,16 @@ export default class Problem extends BaseModel {
    * Query Scopes
    * ------------------------------------------------------
    */
+  public static searchQueryScope = scope((query, search) => {
+    const fields = ['title', 'body']
+    let sql = ''
+
+    fields.forEach(
+      (field, i) => (sql = `${sql} ${i !== 0 ? ' or ' : ' '} ${field} ilike '%${search}%'`)
+    )
+
+    return query.whereRaw(`(${sql})`)
+  })
 
   /**
    * ------------------------------------------------------

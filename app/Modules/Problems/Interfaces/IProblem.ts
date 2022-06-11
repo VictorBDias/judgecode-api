@@ -9,7 +9,7 @@ export namespace IProblem {
       page: number
       perPage: number
       search: string
-      category_id: string
+      categoryId?: string
     }
 
     export type Store = {

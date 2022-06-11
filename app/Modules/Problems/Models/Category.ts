@@ -1,5 +1,5 @@
 import BaseModel from 'App/Shared/Models/BaseModel'
-import { column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import { column, hasMany, HasMany, scope } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 
 import Problem from 'App/Modules/Problems/Models/Problem'
@@ -57,6 +57,16 @@ export default class Category extends BaseModel {
    * Query Scopes
    * ------------------------------------------------------
    */
+  public static searchQueryScope = scope((query, search) => {
+    const fields = ['name', 'description']
+    let sql = ''
+
+    fields.forEach(
+      (field, i) => (sql = `${sql} ${i !== 0 ? ' or ' : ' '} ${field} ilike '%${search}%'`)
+    )
+
+    return query.whereRaw(`(${sql})`)
+  })
 
   /**
    * ------------------------------------------------------

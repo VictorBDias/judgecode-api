@@ -7,10 +7,10 @@ Route.group(() => {
    */
   Route.group(() => {
     Route.get('/', new CategoriesController().list).as('categories.admin.list')
-    Route.get('/:id', new CategoriesController().list).as('categories.admin.list')
-    Route.post('/', new CategoriesController().list).as('categories.admin.list')
-    Route.put('/:id', new CategoriesController().list).as('categories.admin.list')
-    Route.delete('/:id', new CategoriesController().list).as('categories.admin.list')
+    Route.get('/:id', new CategoriesController().get).as('categories.admin.get')
+    Route.post('/', new CategoriesController().store).as('categories.admin.store')
+    Route.put('/:id', new CategoriesController().edit).as('categories.admin.edit')
+    Route.delete('/:id', new CategoriesController().delete).as('categories.admin.delete')
   }).prefix('categories')
 })
   .prefix('admin')

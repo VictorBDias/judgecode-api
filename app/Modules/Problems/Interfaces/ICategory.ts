@@ -16,7 +16,7 @@ export namespace ICategory {
       description?: string
     }
 
-    export type Update = {
+    export type Edit = {
       name?: string
       description?: string
     }
