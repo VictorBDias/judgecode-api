@@ -4,9 +4,9 @@ import Role from 'App/Modules/Accounts/Models/Role'
 import RolesRepository from 'App/Modules/Accounts/Repositories/RolesRepository'
 import NotFoundException from 'App/Shared/Exceptions/NotFoundException'
 
-import DTOs = IRole.DTOs
 import { RolesDefault } from 'App/Modules/Accounts/Defaults'
 
+import DTOs = IRole.DTOs
 const rolesRepository = new RolesRepository()
 
 export const listRoles = async ({

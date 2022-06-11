@@ -9,8 +9,8 @@ import RolesRepository from 'App/Modules/Accounts/Repositories/RolesRepository'
 import NotFoundException from 'App/Shared/Exceptions/NotFoundException'
 import BadRequestException from 'App/Shared/Exceptions/BadRequestException'
 
-import DTOs = IUser.DTOs
 import { UsersDefault } from 'App/Modules/Accounts/Defaults'
+import DTOs = IUser.DTOs
 
 const usersRepository = new UsersRepository()
 const rolesRepository = new RolesRepository()

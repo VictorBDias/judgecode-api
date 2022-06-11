@@ -3,14 +3,14 @@
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/gabrielmaialva33/base-acl-api?color=00b8d3?style=flat&logo=appveyor" alt="License" />
-  <img src="https://img.shields.io/github/languages/top/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="GitHub top language" >
-  <img src="https://img.shields.io/github/languages/count/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="GitHub language count" >
-  <img src="https://img.shields.io/github/repo-size/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="Repository size" >
-  <img src="https://wakatime.com/badge/user/e61842d0-c588-4586-96a3-f0448a434be4/project/b0347a5f-cacf-486d-bd2d-b91d3e6cb570.svg?style=flat&logo=appveyor" alt="Wakatime" >
-  <a href="https://github.com/gabrielmaialva33/base-rbac-api/commits/master">
-    <img src="https://img.shields.io/github/last-commit/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="GitHub last commit" >
-    <img src="https://img.shields.io/badge/feito%20por-Maia-15c3d6?style=flat&logo=appveyor" alt="Maia" >
+  <img src="https://img.shields.io/github/license/VictorBDias/judgecode-api?color=00b8d3?style=flat&logo=appveyor" alt="License" />
+  <img src="https://img.shields.io/github/languages/top/VictorBDias/judgecode-api?style=flat&logo=appveyor" alt="GitHub top language" >
+  <img src="https://img.shields.io/github/languages/count/VictorBDias/judgecode-api?style=flat&logo=appveyor" alt="GitHub language count" >
+  <img src="https://img.shields.io/github/repo-size/VictorBDias/judgecode-api?style=flat&logo=appveyor" alt="Repository size" >
+  <img src="https://wakatime.com/badge/user/e61842d0-c588-4586-96a3-f0448a434be4/project/8e53dc3d-a3bf-4e4c-96b9-cd4e72fd13db.svg?style=flat&logo=appveyor" alt="Wakatime" >
+  <a href="https://github.com/gabrielmaialva33/base-acl-api/commits/master">
+    <img src="https://img.shields.io/github/last-commit/VictorBDias/judgecode-api?style=flat&logo=appveyor" alt="GitHub last commit" >
+    <img src="https://img.shields.io/badge/made%20by-Maia & Victor-15c3d6?style=flat&logo=appveyor" alt="Maia" >  
   </a>
 </p>
 
@@ -76,7 +76,7 @@ Os seguintes softwares devem estar instalados:
 ### :arrow_down: **Clonando o repositório**
 
 ```sh
-  $ git clone https://github.com/gabrielmaialva33/base-acl-api.git
+  $ git clone https://github.com/VictorBDias/judgecode-api
 ```
 
 <br>
@@ -86,7 +86,7 @@ Os seguintes softwares devem estar instalados:
 - :package: API
 
 ```sh
-  $ cd base-acl-api
+  $ cd judgecode-api
   # Instalação de dependências.
   $ yarn # ou npm install
   # Configuração ambiente de sistema
@@ -101,7 +101,7 @@ Os seguintes softwares devem estar instalados:
 
 ## :twisted_rightwards_arrows: Rotas
 
-Arquivo de rotas [Donwload](https://raw.githubusercontent.com/gabrielmaialva33/base-acl-api/master/.github/assets/insomnia/Insomnia.json.zip)
+Arquivo de rotas [Donwload](https://raw.githubusercontent.com/VictorBDias/judgecode-api/master/.github/assets/insomnia/Insomnia.json.zip)
 
 ## :memo: Licença
 

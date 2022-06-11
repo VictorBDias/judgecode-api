@@ -73,6 +73,21 @@ export default class User extends BaseModel {
 
   /**
    * ------------------------------------------------------
+   * Relationships
+   * ------------------------------------------------------
+   * - define User model relationships
+   */
+  @manyToMany(() => Role, {
+    localKey: 'id',
+    pivotForeignKey: 'user_id',
+    relatedKey: 'id',
+    pivotRelatedForeignKey: 'role_id',
+    pivotTable: 'users_roles',
+  })
+  public roles: ManyToMany<typeof Role>
+
+  /**
+   * ------------------------------------------------------
    * Hooks
    * ------------------------------------------------------
    */
@@ -112,21 +127,6 @@ export default class User extends BaseModel {
 
   /**
    * ------------------------------------------------------
-   * Relationships
-   * ------------------------------------------------------
-   * - define User model relationships
-   */
-  @manyToMany(() => Role, {
-    localKey: 'id',
-    pivotForeignKey: 'user_id',
-    relatedKey: 'id',
-    pivotRelatedForeignKey: 'role_id',
-    pivotTable: 'users_roles',
-  })
-  public roles: ManyToMany<typeof Role>
-
-  /**
-   * ------------------------------------------------------
    * Query Scopes
    * ------------------------------------------------------
    */
@@ -150,7 +150,6 @@ export default class User extends BaseModel {
    * Misc
    * ------------------------------------------------------
    */
-
   public isRole(name: string): boolean {
     return !!this.roles.find((role) => role.name === name)
   }
