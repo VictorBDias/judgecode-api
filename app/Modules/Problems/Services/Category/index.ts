@@ -19,9 +19,7 @@ export const listCategories = async ({
   categoriesRepository.listWithPagination({
     page,
     perPage,
-    scopes: (scopes) => {
-      scopes.searchQueryScope(search)
-    },
+    scopes: (scopes) => scopes.searchQueryScope(search),
   })
 
 export const getCategory = async (id: string): Promise<Category> => {

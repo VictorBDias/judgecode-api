@@ -19,9 +19,7 @@ export const listProblems = async ({
   problemsRepository.listWithPagination({
     page,
     perPage,
-    scopes: (scopes) => {
-      scopes.searchQueryScope(search)
-    },
+    scopes: (scopes) => scopes.searchQueryScope(search),
     clauses: { where: categoryId ? { category_id: categoryId } : {} },
   })
 
@@ -42,7 +40,7 @@ export const editProblem = async (id: string, data: DTOs.Edit): Promise<Problem>
   return problem
 }
 
-export const deleteProblem = async (id: string) => {
+export const deleteProblem = async (id: string): Promise<void> => {
   const problem = await problemsRepository.findBy('id', id)
   if (!problem) throw new NotFoundException('Problem not found or not available.')
   problem.merge({

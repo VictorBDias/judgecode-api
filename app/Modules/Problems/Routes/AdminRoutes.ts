@@ -1,4 +1,5 @@
 import Route from '@ioc:Adonis/Core/Route'
+
 import CategoriesController from 'App/Modules/Problems/Controllers/Http/Admin/CategoriesController'
 import ProblemsController from 'App/Modules/Problems/Controllers/Http/Admin/ProblemsController'
 

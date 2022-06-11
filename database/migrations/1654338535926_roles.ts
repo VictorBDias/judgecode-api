@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 import Logger from '@ioc:Adonis/Core/Logger'
 
-export default class extends BaseSchema {
+export default class RolesSchema extends BaseSchema {
   protected tableName = 'roles'
 
   public async up() {

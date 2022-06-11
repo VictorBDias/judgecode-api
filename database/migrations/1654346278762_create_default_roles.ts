@@ -2,7 +2,7 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 import { storeDefaultRole } from 'App/Modules/Accounts/Services/Role'
 
-export default class extends BaseSchema {
+export default class CreateRoles extends BaseSchema {
   public async up() {
     await storeDefaultRole()
   }

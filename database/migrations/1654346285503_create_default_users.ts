@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 import { storeDefaultUser } from 'App/Modules/Accounts/Services/User'
 
-export default class extends BaseSchema {
+export default class CreateUsers extends BaseSchema {
   public async up() {
     await storeDefaultUser()
   }

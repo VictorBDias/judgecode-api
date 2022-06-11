@@ -6,18 +6,15 @@ import {
   BelongsTo,
   belongsTo,
   column,
-  HasMany,
-  hasMany,
   scope,
 } from '@ioc:Adonis/Lucid/Orm'
 
 import BaseModel from 'App/Shared/Models/BaseModel'
+import Problem from 'App/Modules/Problems/Models/Problem'
 import User from 'App/Modules/Accounts/Models/User'
-import Category from 'App/Modules/Problems/Models/Category'
-import Submission from './Submission'
 
-export default class Problem extends BaseModel {
-  public static table = 'problems'
+export default class Submission extends BaseModel {
+  public static table = 'submissions'
 
   /**
    * ------------------------------------------------------
@@ -29,16 +26,16 @@ export default class Problem extends BaseModel {
   public id: string
 
   @column()
-  public title: string
+  public source_code: string
 
   @column()
-  public body: string
+  public language: string
 
   @column()
-  public owner_id: string
+  public problem_id: string
 
   @column()
-  public category_id: string
+  public user_id: string
 
   @column({ serializeAs: null })
   public is_deleted: boolean
@@ -56,25 +53,19 @@ export default class Problem extends BaseModel {
    * ------------------------------------------------------
    * Relationships
    * ------------------------------------------------------
-   * - define Problem model relationships
+   * - define Submission model relationships
    */
-  @belongsTo(() => User, {
-    localKey: 'id',
-    foreignKey: 'owner_id',
-  })
-  public owner: BelongsTo<typeof User>
-
-  @belongsTo(() => Category, {
-    localKey: 'id',
-    foreignKey: 'category_id',
-  })
-  public category: BelongsTo<typeof Category>
-
-  @hasMany(() => Submission, {
+  @belongsTo(() => Problem, {
     localKey: 'id',
     foreignKey: 'problem_id',
   })
-  public submissions: HasMany<typeof Submission>
+  public problem: BelongsTo<typeof Problem>
+
+  @belongsTo(() => User, {
+    localKey: 'id',
+    foreignKey: 'user_id',
+  })
+  public user: BelongsTo<typeof User>
 
   /**
    * ------------------------------------------------------
@@ -82,17 +73,19 @@ export default class Problem extends BaseModel {
    * ------------------------------------------------------
    */
   @afterFind()
-  public static async loadProblemsRelationsOnGet(problem: Problem): Promise<void> {
-    await problem.load('category')
-    await problem.load('owner')
+  public static async loadSubmissionRelationsOnGet(submission: Submission): Promise<void> {
+    await submission.load('problem')
+    await submission.load('user')
   }
 
   @afterFetch()
   @afterPaginate()
-  public static async loadProblemsRelationsOnPaginate(problems: Array<Problem>): Promise<void> {
-    for (const problem of problems) {
-      await problem.load('category')
-      await problem.load('owner')
+  public static async loadSubmissionRelationsOnPaginate(
+    submissions: Array<Submission>
+  ): Promise<void> {
+    for (const submission of submissions) {
+      await submission.load('problem')
+      await submission.load('user')
     }
   }
 
@@ -102,7 +95,7 @@ export default class Problem extends BaseModel {
    * ------------------------------------------------------
    */
   public static searchQueryScope = scope((query, search) => {
-    const fields = ['title', 'body']
+    const fields = ['source_code', 'language']
     let sql = ''
 
     fields.forEach(

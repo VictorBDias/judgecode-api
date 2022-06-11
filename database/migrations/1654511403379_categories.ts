@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 import Logger from '@ioc:Adonis/Core/Logger'
 
-export default class extends BaseSchema {
+export default class CategoriesSchema extends BaseSchema {
   protected tableName = 'categories'
 
   public async up() {
@@ -17,7 +17,7 @@ export default class extends BaseSchema {
         table.timestamp('updated_at', { useTz: true })
         table.timestamp('deleted_at', { useTz: true }).defaultTo(null)
       })
-    else Logger.info('Roles migration already running')
+    else Logger.info('Categories migration already running')
   }
 
   public async down() {

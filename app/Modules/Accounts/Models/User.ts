@@ -12,11 +12,15 @@ import {
   afterPaginate,
   ModelQueryBuilderContract,
   afterCreate,
+  hasMany,
+  HasMany,
 } from '@ioc:Adonis/Lucid/Orm'
 
 import BaseModel from 'App/Shared/Models/BaseModel'
 import Role from 'App/Modules/Accounts/Models/Role'
 import RolesRepository from 'App/Modules/Accounts/Repositories/RolesRepository'
+import Problem from 'App/Modules/Problems/Models/Problem'
+import Submission from 'App/Modules/Problems/Models/Submission'
 
 export default class User extends BaseModel {
   public static table = 'users'
@@ -86,6 +90,18 @@ export default class User extends BaseModel {
   })
   public roles: ManyToMany<typeof Role>
 
+  @hasMany(() => Problem, {
+    localKey: 'id',
+    foreignKey: 'owner_id',
+  })
+  public problems: HasMany<typeof Problem>
+
+  @hasMany(() => Submission, {
+    localKey: 'id',
+    foreignKey: 'user_id',
+  })
+  public submissions: HasMany<typeof Submission>
+
   /**
    * ------------------------------------------------------
    * Hooks
@@ -112,18 +128,6 @@ export default class User extends BaseModel {
     const roleId = await new RolesRepository().pluckBy('id', { where: { name: 'user' } })
     if (user) await user.related('roles').attach(roleId)
   }
-
-  // @beforeCreate()
-  // public static async attachUserName(user: User): Promise<void> {
-  //   if (!user.username) {
-  //     user.username = user.email.split('@')[0]
-  //     for (let i = 0; ; i++) {
-  //       const isExists = await User.query().where('username', user.username).first()
-  //       if (isExists) user.username = `${user.username}${i}`
-  //       else break
-  //     }
-  //   }
-  // }
 
   /**
    * ------------------------------------------------------
