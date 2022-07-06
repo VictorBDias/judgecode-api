@@ -15,14 +15,14 @@ export const listSubmissions = async ({
   perPage,
   search,
   problemId,
-  userId,
+  guestId,
 }: DTOs.List): Promise<PaginateContractType<typeof Submission>> =>
   submissionsRepository.listWithPagination({
     page,
     perPage,
     scopes: (scopes) => scopes.searchQueryScope(search),
     clauses: {
-      where: problemId ? { problem_id: problemId, user_id: userId } : { user_id: userId },
+      where: problemId ? { problem_id: problemId, guest_id: guestId } : { guest_id: guestId },
     },
   })
 

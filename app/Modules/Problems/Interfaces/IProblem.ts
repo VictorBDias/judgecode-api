@@ -15,6 +15,7 @@ export namespace IProblem {
     export type Store = {
       title: string
       body: string
+      language: string
       owner_id: string
       category_id: string
     }
@@ -22,6 +23,7 @@ export namespace IProblem {
     export type Edit = {
       title?: string
       body?: string
+      language?: string
       owner_id?: string
       category_id?: string
     }

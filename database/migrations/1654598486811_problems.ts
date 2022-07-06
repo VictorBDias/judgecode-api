@@ -11,6 +11,7 @@ export default class ProblemsSchema extends BaseSchema {
 
         table.string('title', 100).notNullable()
         table.text('body').notNullable()
+        table.string('language', 50).notNullable()
 
         table
           .uuid('owner_id')

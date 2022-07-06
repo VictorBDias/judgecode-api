@@ -35,6 +35,9 @@ export default class Problem extends BaseModel {
   public body: string
 
   @column()
+  public language: string
+
+  @column()
   public owner_id: string
 
   @column()

@@ -10,21 +10,21 @@ export namespace ISubmission {
       perPage: number
       search: string
       problemId?: string
-      userId: string
+      guestId: string
     }
 
     export type Store = {
       source_code: string
       language: string
       problem_id: string
-      user_id: string
+      guest_id: string
     }
 
     export type Edit = {
       source_code?: string
       language?: string
       problem_id?: string
-      user_id?: string
+      guest_id?: string
     }
   }
 }

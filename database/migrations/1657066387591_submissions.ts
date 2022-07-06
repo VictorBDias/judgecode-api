@@ -21,9 +21,9 @@ export default class SubmissionsSchema extends BaseSchema {
           .onUpdate('CASCADE')
 
         table
-          .uuid('user_id')
+          .uuid('guest_id')
           .references('id')
-          .inTable('users')
+          .inTable('guests')
           .notNullable()
           .onDelete('CASCADE')
           .onUpdate('CASCADE')

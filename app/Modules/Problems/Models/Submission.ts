@@ -11,7 +11,8 @@ import {
 
 import BaseModel from 'App/Shared/Models/BaseModel'
 import Problem from 'App/Modules/Problems/Models/Problem'
-import User from 'App/Modules/Accounts/Models/User'
+
+import Guest from 'App/Modules/Accounts/Models/Guest'
 
 export default class Submission extends BaseModel {
   public static table = 'submissions'
@@ -35,7 +36,7 @@ export default class Submission extends BaseModel {
   public problem_id: string
 
   @column()
-  public user_id: string
+  public guest_id: string
 
   @column({ serializeAs: null })
   public is_deleted: boolean
@@ -61,11 +62,11 @@ export default class Submission extends BaseModel {
   })
   public problem: BelongsTo<typeof Problem>
 
-  @belongsTo(() => User, {
+  @belongsTo(() => Guest, {
     localKey: 'id',
-    foreignKey: 'user_id',
+    foreignKey: 'guest_id',
   })
-  public user: BelongsTo<typeof User>
+  public guest: BelongsTo<typeof Guest>
 
   /**
    * ------------------------------------------------------
@@ -75,7 +76,7 @@ export default class Submission extends BaseModel {
   @afterFind()
   public static async loadSubmissionRelationsOnGet(submission: Submission): Promise<void> {
     await submission.load('problem')
-    await submission.load('user')
+    await submission.load('guest')
   }
 
   @afterFetch()
@@ -85,7 +86,7 @@ export default class Submission extends BaseModel {
   ): Promise<void> {
     for (const submission of submissions) {
       await submission.load('problem')
-      await submission.load('user')
+      await submission.load('guest')
     }
   }
 

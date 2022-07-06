@@ -31,4 +31,4 @@ Route.group(() => {
     Route.put('/:id', new SubmissionsController().edit).as('submissions.edit')
     Route.delete('/:id', new SubmissionsController().delete).as('submissions.delete')
   }).prefix('submissions')
-}).middleware(['auth', 'acl:root,admin,user'])
+})
