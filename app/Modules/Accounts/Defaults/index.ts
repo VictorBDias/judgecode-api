@@ -60,4 +60,12 @@ export const UsersDefault: Array<UserDefaultType> = [
     password: 'judgecode@2022',
     roleName: 'user',
   },
+  {
+    first_name: 'Vitor',
+    last_name: 'Batisttete',
+    username: 'vitor',
+    email: 'victor.batisttete@judgecode.com',
+    password: 'judgecode@2022',
+    roleName: 'root',
+  },
 ]

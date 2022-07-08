@@ -12,7 +12,7 @@ export default class AuthController {
         .use('api')
         .attempt(uid, password, { name: 'acl-token', expiresIn: '1h' })
 
-      return response.json(token)
+      return response.json({ token, user: auth.user })
     } catch (error) {
       throw new AuthorizationException(
         'Unable to login, please check your credentials or try again later.'
