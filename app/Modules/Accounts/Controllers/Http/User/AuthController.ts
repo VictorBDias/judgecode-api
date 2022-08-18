@@ -10,7 +10,7 @@ export default class AuthController {
     try {
       const token = await auth
         .use('api')
-        .attempt(uid, password, { name: 'acl-token', expiresIn: '1h' })
+        .attempt(uid, password, { name: 'acl-token', expiresIn: '24h' })
 
       return response.json({ token, user: auth.user })
     } catch (error) {
