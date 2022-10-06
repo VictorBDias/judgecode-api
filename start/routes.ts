@@ -33,3 +33,4 @@ import 'App/Modules/Accounts/Routes/GuestRoutes'
 
 import 'App/Modules/Problems/Routes/AdminRoutes'
 import 'App/Modules/Problems/Routes/UserRoutes'
+import 'App/Modules/Problems/Routes/GuestRoutes'

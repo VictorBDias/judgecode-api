@@ -6,9 +6,13 @@ export const StoreSubmissionSchema = schema.create({
   guest_id: schema.string({ trim: true, escape: true }, [
     rules.exists({ table: 'guests', column: 'id' }),
   ]),
-  problem_id: schema.string({ trim: true, escape: true }, [
-    rules.exists({ table: 'problems', column: 'id', whereNot: { is_deleted: true } }),
-  ]),
+  problem_ids: schema
+    .array()
+    .members(
+      schema.string({ trim: true, escape: true }, [
+        rules.exists({ table: 'problems', column: 'id', whereNot: { is_deleted: true } }),
+      ])
+    ),
 })
 
 export const EditSubmissionSchema = schema.create({
@@ -17,7 +21,11 @@ export const EditSubmissionSchema = schema.create({
   guest_id: schema.string.optional({ trim: true, escape: true }, [
     rules.exists({ table: 'guests', column: 'id' }),
   ]),
-  problem_id: schema.string.optional({ trim: true, escape: true }, [
-    rules.exists({ table: 'problems', column: 'id', whereNot: { is_deleted: true } }),
-  ]),
+  problem_ids: schema.array
+    .optional()
+    .members(
+      schema.string({ trim: true, escape: true }, [
+        rules.exists({ table: 'problems', column: 'id', whereNot: { is_deleted: true } }),
+      ])
+    ),
 })

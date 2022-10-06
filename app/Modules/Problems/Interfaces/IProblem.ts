@@ -8,7 +8,7 @@ export namespace IProblem {
     export type List = {
       page: number
       perPage: number
-      search: string
+      search?: string
       categoryId?: string
     }
 
@@ -16,16 +16,15 @@ export namespace IProblem {
       title: string
       body: string
       language: string
-      owner_id: string
-      category_id: string
+      owner_id?: string
     }
 
     export type Edit = {
+      id?: string
       title?: string
       body?: string
       language?: string
       owner_id?: string
-      category_id?: string
     }
   }
 }

@@ -13,7 +13,8 @@ export default class CategoriesController {
   public async list({ request, response }: HttpContextContract): Promise<void> {
     const page = request.input('page', 1)
     const perPage = request.input('per_page', 10)
-    const search = request.input('search', '')
+    const search = request.input('search', null)
+
     const categories = await listCategories({ page, perPage, search })
     return response.json(categories)
   }

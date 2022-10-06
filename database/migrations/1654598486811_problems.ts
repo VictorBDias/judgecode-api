@@ -21,14 +21,6 @@ export default class ProblemsSchema extends BaseSchema {
           .onDelete('CASCADE')
           .onUpdate('CASCADE')
 
-        table
-          .uuid('category_id')
-          .references('id')
-          .inTable('categories')
-          .notNullable()
-          .onDelete('CASCADE')
-          .onUpdate('CASCADE')
-
         table.boolean('is_deleted').notNullable().defaultTo(false)
         table.timestamp('created_at', { useTz: true })
         table.timestamp('updated_at', { useTz: true })

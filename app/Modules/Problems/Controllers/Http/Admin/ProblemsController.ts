@@ -13,8 +13,9 @@ export default class ProblemsController {
   public async list({ request, response }: HttpContextContract): Promise<void> {
     const page = request.input('page', 1)
     const perPage = request.input('per_page', 10)
-    const search = request.input('search', '')
+    const search = request.input('search', null)
     const categoryId = request.input('category_id', null)
+
     const problems = await listProblems({ page, perPage, search, categoryId })
     return response.json(problems)
   }

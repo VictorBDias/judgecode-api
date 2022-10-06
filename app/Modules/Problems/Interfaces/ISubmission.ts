@@ -8,23 +8,23 @@ export namespace ISubmission {
     export type List = {
       page: number
       perPage: number
-      search: string
+      search?: string
       problemId?: string
-      guestId: string
+      guestId?: string
     }
 
     export type Store = {
       source_code: string
       language: string
-      problem_id: string
       guest_id: string
+      problem_ids: Array<string>
     }
 
     export type Edit = {
       source_code?: string
       language?: string
-      problem_id?: string
       guest_id?: string
+      problem_ids?: Array<string>
     }
   }
 }

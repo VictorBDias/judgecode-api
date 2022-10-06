@@ -6,15 +6,16 @@ import {
   BelongsTo,
   belongsTo,
   column,
-  HasMany,
-  hasMany,
+  ManyToMany,
+  manyToMany,
+  ModelQueryBuilderContract,
   scope,
 } from '@ioc:Adonis/Lucid/Orm'
 
 import BaseModel from 'App/Shared/Models/BaseModel'
 import User from 'App/Modules/Accounts/Models/User'
 import Category from 'App/Modules/Problems/Models/Category'
-import Submission from './Submission'
+import Submission from 'App/Modules/Problems/Models/Submission'
 
 export default class Problem extends BaseModel {
   public static table = 'problems'
@@ -40,9 +41,6 @@ export default class Problem extends BaseModel {
   @column()
   public owner_id: string
 
-  @column()
-  public category_id: string
-
   @column({ serializeAs: null })
   public is_deleted: boolean
 
@@ -67,17 +65,19 @@ export default class Problem extends BaseModel {
   })
   public owner: BelongsTo<typeof User>
 
-  @belongsTo(() => Category, {
+  @manyToMany(() => Category, {
     localKey: 'id',
-    foreignKey: 'category_id',
+    pivotForeignKey: 'category_id',
+    relatedKey: 'id',
+    pivotRelatedForeignKey: 'problem_id',
+    pivotTable: 'categories_problems',
   })
-  public category: BelongsTo<typeof Category>
+  public categories: ManyToMany<typeof Category>
 
-  @hasMany(() => Submission, {
-    localKey: 'id',
-    foreignKey: 'problem_id',
+  @manyToMany(() => Submission, {
+    pivotTable: 'submissions_problems',
   })
-  public submissions: HasMany<typeof Submission>
+  public submissions: ManyToMany<typeof Submission>
 
   /**
    * ------------------------------------------------------
@@ -86,7 +86,7 @@ export default class Problem extends BaseModel {
    */
   @afterFind()
   public static async loadProblemsRelationsOnGet(problem: Problem): Promise<void> {
-    await problem.load('category')
+    await problem.load('categories')
     await problem.load('owner')
   }
 
@@ -94,7 +94,7 @@ export default class Problem extends BaseModel {
   @afterPaginate()
   public static async loadProblemsRelationsOnPaginate(problems: Array<Problem>): Promise<void> {
     for (const problem of problems) {
-      await problem.load('category')
+      await problem.load('categories')
       await problem.load('owner')
     }
   }
@@ -114,6 +114,12 @@ export default class Problem extends BaseModel {
 
     return query.whereRaw(`(${sql})`)
   })
+
+  public static filterByCategoryQueryScope = scope(
+    (query: ModelQueryBuilderContract<typeof Problem>, categoryId: string) => {
+      query.whereHas('categories', (builder) => builder.where('id', categoryId))
+    }
+  )
 
   /**
    * ------------------------------------------------------

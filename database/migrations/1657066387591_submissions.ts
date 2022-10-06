@@ -13,14 +13,6 @@ export default class SubmissionsSchema extends BaseSchema {
         table.text('language').notNullable()
 
         table
-          .uuid('problem_id')
-          .references('id')
-          .inTable('problems')
-          .notNullable()
-          .onDelete('CASCADE')
-          .onUpdate('CASCADE')
-
-        table
           .uuid('guest_id')
           .references('id')
           .inTable('guests')

@@ -1,4 +1,4 @@
-import { afterFind, column, hasMany, HasMany, scope } from '@ioc:Adonis/Lucid/Orm'
+import { afterFind, column, ManyToMany, manyToMany, scope } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 
 import BaseModel from 'App/Shared/Models/BaseModel'
@@ -40,11 +40,14 @@ export default class Category extends BaseModel {
    * ------------------------------------------------------
    * - define Category model relationships
    */
-  @hasMany(() => Problem, {
+  @manyToMany(() => Problem, {
     localKey: 'id',
-    foreignKey: 'category_id',
+    pivotForeignKey: 'category_id',
+    relatedKey: 'id',
+    pivotRelatedForeignKey: 'problem_id',
+    pivotTable: 'categories_problems',
   })
-  public problems: HasMany<typeof Problem>
+  public problems: ManyToMany<typeof Problem>
 
   /**
    * ------------------------------------------------------

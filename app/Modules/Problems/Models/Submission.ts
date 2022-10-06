@@ -6,6 +6,9 @@ import {
   BelongsTo,
   belongsTo,
   column,
+  ManyToMany,
+  manyToMany,
+  ModelQueryBuilderContract,
   scope,
 } from '@ioc:Adonis/Lucid/Orm'
 
@@ -33,9 +36,6 @@ export default class Submission extends BaseModel {
   public language: string
 
   @column()
-  public problem_id: string
-
-  @column()
   public guest_id: string
 
   @column({ serializeAs: null })
@@ -56,11 +56,10 @@ export default class Submission extends BaseModel {
    * ------------------------------------------------------
    * - define Submission model relationships
    */
-  @belongsTo(() => Problem, {
-    localKey: 'id',
-    foreignKey: 'problem_id',
+  @manyToMany(() => Problem, {
+    pivotTable: 'submissions_problems',
   })
-  public problem: BelongsTo<typeof Problem>
+  public problems: ManyToMany<typeof Problem>
 
   @belongsTo(() => Guest, {
     localKey: 'id',
@@ -75,7 +74,7 @@ export default class Submission extends BaseModel {
    */
   @afterFind()
   public static async loadSubmissionRelationsOnGet(submission: Submission): Promise<void> {
-    await submission.load('problem')
+    await submission.load('problems')
     await submission.load('guest')
   }
 
@@ -85,7 +84,7 @@ export default class Submission extends BaseModel {
     submissions: Array<Submission>
   ): Promise<void> {
     for (const submission of submissions) {
-      await submission.load('problem')
+      await submission.load('problems')
       await submission.load('guest')
     }
   }
@@ -105,6 +104,22 @@ export default class Submission extends BaseModel {
 
     return query.whereRaw(`(${sql})`)
   })
+
+  public static filterByProblemIdQueryScope = scope(
+    (query: ModelQueryBuilderContract<typeof Submission>, problemId) => {
+      query.whereHas('problems', (query) => {
+        query.where('id', problemId)
+      })
+    }
+  )
+
+  public static filterByGuestIdQueryScope = scope(
+    (query: ModelQueryBuilderContract<typeof Submission>, guestId) => {
+      query.whereHas('guest', (query) => {
+        query.where('id', guestId)
+      })
+    }
+  )
 
   /**
    * ------------------------------------------------------

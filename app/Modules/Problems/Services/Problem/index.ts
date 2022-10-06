@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon'
+import HttpContext from '@ioc:Adonis/Core/HttpContext'
 
 import { PaginateContractType } from 'App/Shared/Interfaces/BaseInterface'
 import { IProblem } from 'App/Modules/Problems/Interfaces/IProblem'
@@ -13,14 +14,16 @@ const problemsRepository = new ProblemsRepository()
 export const listProblems = async ({
   page = 1,
   perPage = 10,
-  search = '',
+  search,
   categoryId,
 }: DTOs.List): Promise<PaginateContractType<typeof Problem>> =>
   problemsRepository.listWithPagination({
     page,
     perPage,
-    scopes: (scopes) => scopes.searchQueryScope(search),
-    clauses: { where: categoryId ? { category_id: categoryId } : {} },
+    scopes: (scopes) => {
+      if (search) scopes.searchQueryScope(search)
+      if (categoryId) scopes.filterByCategoryQueryScope(categoryId)
+    },
   })
 
 export const getProblem = async (id: string): Promise<Problem> => {
@@ -29,14 +32,30 @@ export const getProblem = async (id: string): Promise<Problem> => {
   return problem
 }
 
-export const storeProblem = async (data: DTOs.Store): Promise<Problem> =>
-  problemsRepository.store(data)
+export const storeProblem = async ({ owner_id, ...data }: DTOs.Store): Promise<Problem> => {
+  const { auth } = HttpContext.get()!
 
-export const editProblem = async (id: string, data: DTOs.Edit): Promise<Problem> => {
+  const problem = await problemsRepository.store({
+    owner_id: owner_id || auth.user!.id,
+    ...data,
+  })
+
+  return problem.refresh()
+}
+
+export const editProblem = async (
+  id: string,
+  { owner_id, ...data }: DTOs.Edit
+): Promise<Problem> => {
   const problem = await problemsRepository.findBy('id', id)
   if (!problem) throw new NotFoundException('Problem not found or not available.')
-  problem.merge(data)
+
+  problem.merge({
+    owner_id: owner_id || problem.owner_id,
+    ...data,
+  })
   await problemsRepository.save(problem)
+
   return problem
 }
 
