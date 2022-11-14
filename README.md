@@ -1,7 +1,3 @@
-<h1 align="center">
-  <img src=".github/assets/images/img2.png" height="200" alt="acl">
-</h1>
-
 <p align="center">
   <img src="https://img.shields.io/github/license/VictorBDias/judgecode-api?color=00b8d3?style=flat&logo=appveyor" alt="License" />
   <img src="https://img.shields.io/github/languages/top/VictorBDias/judgecode-api?style=flat&logo=appveyor" alt="GitHub top language" >
