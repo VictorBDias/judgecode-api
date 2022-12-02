@@ -30,6 +30,19 @@
     "@poppinss/utils" "^4.0.4"
     semver "^7.3.7"
 
+"@adonisjs/application@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@adonisjs/application/-/application-5.3.0.tgz#905d6e9fc4094c9cdc47bcbc1b887ab6ebf90c3c"
+  integrity sha512-AruZZXMgOdmmRxJEHUbXoqhgRavPfhkeIR2nQtGyxbn0PCNjqlGraq8ypuLINY1J+wNuH2tt0xCS98EDeMdTOQ==
+  dependencies:
+    "@adonisjs/config" "^3.0.9"
+    "@adonisjs/env" "^3.0.9"
+    "@adonisjs/fold" "^8.2.0"
+    "@adonisjs/logger" "^4.1.5"
+    "@adonisjs/profiler" "^6.0.9"
+    "@poppinss/utils" "^5.0.0"
+    semver "^7.3.8"
+
 "@adonisjs/assembler@^5.9.5":
   version "5.9.5"
   resolved "https://registry.yarnpkg.com/@adonisjs/assembler/-/assembler-5.9.5.tgz#e7af88edf85ab09f117821364f7db1eb8e5a0460"
@@ -84,18 +97,25 @@
   dependencies:
     "@poppinss/utils" "^4.0.2"
 
-"@adonisjs/core@^5.8.9":
-  version "5.8.9"
-  resolved "https://registry.yarnpkg.com/@adonisjs/core/-/core-5.8.9.tgz#e98ebf3b4d0e2fa7c896ddf87f08d744e456fcb0"
-  integrity sha512-bdlVqb6nJD/PkESrKZYO4PjmMqCpglt38kuwS1eUgHVWFrpfwvA4mbtF3T+apiTZMxc34oM79jpUtZOuLpt0uA==
+"@adonisjs/config@^3.0.9":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/@adonisjs/config/-/config-3.0.9.tgz#125742fc99624841950092f07173fc9e61549e38"
+  integrity sha512-f+wzrc+0HLvhJyYGEMV2QTHtyJ8sI3PKvH9h/baW/iF8UO3KF+llHH0Cf3/M5dYnpdz9rnmj0VtdTaIDfxrgGg==
+  dependencies:
+    "@poppinss/utils" "^5.0.0"
+
+"@adonisjs/core@^5.9.0":
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/@adonisjs/core/-/core-5.9.0.tgz#cd5a1ea938a920ff82d9644386c9d53b70b027b8"
+  integrity sha512-32zG9EW0t0Ck0cMzlwD0+z3GJG7k/gZz6P0+h+s8N1N7fHxGixrKs7W7lT3OcIvk0NsuIw1tUPAU7fAWytHEqA==
   dependencies:
     "@adonisjs/ace" "^11.3.1"
-    "@adonisjs/application" "^5.2.5"
+    "@adonisjs/application" "^5.3.0"
     "@adonisjs/bodyparser" "^8.1.7"
     "@adonisjs/drive" "^2.3.0"
     "@adonisjs/encryption" "^4.0.8"
     "@adonisjs/events" "^7.2.1"
-    "@adonisjs/hash" "^7.2.0"
+    "@adonisjs/hash" "^7.2.2"
     "@adonisjs/http-server" "^5.12.0"
     "@adonisjs/validator" "^12.4.1"
     "@poppinss/cliui" "^3.0.5"
@@ -103,7 +123,7 @@
     "@poppinss/utils" "^5.0.0"
     fs-extra "^10.1.0"
     macroable "^7.0.2"
-    memfs "^3.4.10"
+    memfs "^3.4.12"
     serve-static "^1.15.0"
     stringify-attributes "^2.0.0"
 
@@ -149,7 +169,7 @@
   dependencies:
     "@poppinss/utils" "^4.0.4"
 
-"@adonisjs/hash@^7.2.0":
+"@adonisjs/hash@^7.2.2":
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/@adonisjs/hash/-/hash-7.2.2.tgz#ca94ec4713176aa835985e09dbed7d97c532ee94"
   integrity sha512-qJxFX8jNH+5+jxckIIvz2y9pMt59ueT50a4B5kUe/68g5iC7UdwKmMos+tj5Pnm5hRFfwKXbtIQBGd+Bb87+2Q==
@@ -196,6 +216,16 @@
   integrity sha512-OEfve1bqv3IzRWPTKauJb0Gjq6GIrZhbl6alpFaKXMbHbK49ocgo+2Q/N2WAl58kj5VIt/4CE3q2EG44AHfhDA==
   dependencies:
     "@poppinss/utils" "^4.0.3"
+    "@types/pino" "^6.3.12"
+    abstract-logging "^2.0.1"
+    pino "^6.14.0"
+
+"@adonisjs/logger@^4.1.5":
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/@adonisjs/logger/-/logger-4.1.5.tgz#4fbce11fb0914a5188d00c32f674cbdc87f6ccc6"
+  integrity sha512-JMINhXp/6VW0y4e86luyM8vbBzV4Y5F4IzVklMObCu/SwiaCbp5bgx9Z6QOHiGVW8SFVlRF1KlwLq8pAifjTpQ==
+  dependencies:
+    "@poppinss/utils" "^5.0.0"
     "@types/pino" "^6.3.12"
     abstract-logging "^2.0.1"
     pino "^6.14.0"
@@ -3370,6 +3400,11 @@ luxon@^3.1.0:
   resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.1.0.tgz#9ac33d7142b7ea18d4ec8583cdeb0b079abef60d"
   integrity sha512-7w6hmKC0/aoWnEsmPCu5Br54BmbmUp5GfcqBxQngRcXJ+q5fdfjEzn7dxmJh2YdDhgW8PccYtlWKSv4tQkrTQg==
 
+luxon@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.1.1.tgz#b492c645b2474fb86f3bd3283213846b99c32c1e"
+  integrity sha512-Ah6DloGmvseB/pX1cAmjbFvyU/pKuwQMQqz7d0yvuDlVYLTs2WeDHQMpC8tGjm1da+BriHROW/OEIT/KfYg6xw==
+
 macroable@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/macroable/-/macroable-7.0.1.tgz#bd487a3b95f17e3fbf96e1e659fd4bfd194a05f6"
@@ -3450,7 +3485,7 @@ mem@^8.1.1:
     map-age-cleaner "^0.1.3"
     mimic-fn "^3.1.0"
 
-memfs@^3.4.10:
+memfs@^3.4.12:
   version "3.4.12"
   resolved "https://registry.yarnpkg.com/memfs/-/memfs-3.4.12.tgz#d00f8ad8dab132dc277c659dc85bfd14b07d03bd"
   integrity sha512-BcjuQn6vfqP+k100e0E9m61Hyqa//Brp+I3f0OBmN0ATHlFA8vx3Lt8z57R3u2bPqe3WGDBC+nF72fTH7isyEw==
@@ -4209,10 +4244,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
-  integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
+prettier@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.0.tgz#c7df58393c9ba77d6fba3921ae01faf994fb9dc9"
+  integrity sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==
 
 pretty-format@^25.5.0:
   version "25.5.0"
@@ -4536,6 +4571,13 @@ semver@^7.3.5, semver@^7.3.7:
   version "7.3.7"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.7.tgz#12c5b649afdbf9049707796e22a4028814ce523f"
   integrity sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==
+  dependencies:
+    lru-cache "^6.0.0"
+
+semver@^7.3.8:
+  version "7.3.8"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.8.tgz#07a78feafb3f7b32347d725e33de7e2a2df67798"
+  integrity sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==
   dependencies:
     lru-cache "^6.0.0"
 
